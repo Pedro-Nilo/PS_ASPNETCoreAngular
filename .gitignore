@@ -1,4 +1,6 @@
 .vscode
+package-lock.json
+node_modules
 Examples/HelloWorld/obj
 Examples/HelloWorld/bin
 DutchTreat/DutchTreat/obj

@@ -48,3 +48,26 @@ div.productInfo {
         border: 1px solid black;
         max-width: 150px;
     }
+
+#loginToggle {
+    cursor: pointer;
+}
+
+form.popupForm {
+    padding: 5px;
+    border: 1px inset black;
+    display: inline-block;
+}
+
+    form.popupForm input {
+        width: 200px;
+    }
+
+    form.popupForm label {
+        width: 150px;
+        display: inline-block;
+    }
+
+    form.popupForm input[type=checkbox], form.popupForm input[type=submit] {
+        width: auto;
+    }
