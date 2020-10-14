@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dutch Treat: @ViewBag.Title</title>
+        <link rel="stylesheet" href="~/css/site.css"/>
+    </head>
+    <body>
+        <header>
+            <h1>Welcome to Dutch Treat</h1>
+            <menu>
+                <ul>
+                    <li><a asp-controller="App" asp-action="Index">Home</a></li>
+                    <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
+                    <li><a asp-controller="App" asp-action="About">About</a></li>
+                </ul>
+            </menu>
+        </header>
+        <section>
+            <h2>@ViewBag.Title</h2>
+            @RenderBody()
+        </section>
+        <footer>Copyright 2020 Dutch Treat LLC</footer>
+
+        <script src="~/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="~/js/index.js"></script>
+        @RenderSection("scripts", false)
+    </body>
+</html>
