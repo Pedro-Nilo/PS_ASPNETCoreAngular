@@ -1,0 +1,11 @@
+{
+  "ConnectionStrings": {
+    "DutchConnectionString": "Host=127.0.0.1;Port=5500;Database=DutchTreatDatabase;Username=manager;Password=admin"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft":  "Warning"
+    }
+  }
+}

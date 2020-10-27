@@ -1,6 +1,9 @@
+using DutchTreat.Data;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using System;
 
 namespace DutchTreat
 {
@@ -8,14 +11,39 @@ namespace DutchTreat
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+
+            SeedDatabase(host);
+
+            host.Run();
+        }
+
+        private static void SeedDatabase(IHost host)
+        {
+            var scopeFactory = host.Services.GetService<IServiceScopeFactory>();
+
+            using var scope = scopeFactory.CreateScope();
+
+            var seeder = scope.ServiceProvider.GetService<DutchSeeder>();
+
+            seeder.Seed();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration(SetupConfiguration)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        private static void SetupConfiguration(HostBuilderContext hostBuilderContext, IConfigurationBuilder builder)
+        {
+            builder.Sources.Clear();
+
+            builder.AddJsonFile("config.json", false, true)
+                   .AddXmlFile("config.xml", true)
+                   .AddEnvironmentVariables();
+        }
     }
 }
