@@ -1,0 +1,5 @@
+﻿<div class="row">
+    <ul>
+        <li *ngFor="let product of products">{{ product.title }}: {{ product.price | currency:"USD":"symbol" }}</li>
+    </ul>
+</div>
