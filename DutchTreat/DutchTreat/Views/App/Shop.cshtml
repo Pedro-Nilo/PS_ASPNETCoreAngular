@@ -2,13 +2,17 @@
 @{
     ViewBag.Title = "Shop";
 }
+@section Scripts {
+    <script src="~/ts/storecustomer.js"></script>
+    <script src="~/ts/main.js"></script>
+}
 <p>Count: @Model.Count()</p>
 <div class="row">
     @foreach (var product in Model)
     {
         <div class="col-md-3">
             <div class="border bg-light rounded p-1">
-                <img src="~/img/@(product.ArtId).jpg" class="img-fluid"  alt="@product.Title" />
+                <img src="~/img/@(product.ArtId).jpg" class="img-fluid" alt="@product.Title" />
                 <h3>@product.Category - @product.Size</h3>
                 <ul>
                     <li>Price: $@product.Price</li>
