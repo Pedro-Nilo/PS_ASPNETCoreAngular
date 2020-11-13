@@ -5,7 +5,7 @@ class StoreCustomer {
         this.visits = 0;
     }
     showName() {
-        alert(this.firstName + " " + this.lastName);
+        alert(this.firstName + ' ' + this.lastName);
     }
     set name(value) {
         this.ourName = value;
