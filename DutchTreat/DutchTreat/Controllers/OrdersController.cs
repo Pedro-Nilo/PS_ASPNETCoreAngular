@@ -103,7 +103,7 @@ namespace DutchTreat.Controllers
 
                     newOrder.User = currentUser;
 
-                    _repository.AddEntity(newOrder);
+                    _repository.AddOrder(newOrder);
 
                     if (_repository.SaveChanges())
                     {
