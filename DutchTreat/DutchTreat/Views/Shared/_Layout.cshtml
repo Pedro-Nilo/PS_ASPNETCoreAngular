@@ -2,9 +2,17 @@
 <html>
 <head>
     <title>Dutch Treat: @ViewBag.Title</title>
-    <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/css/site.css" rel="stylesheet" />
+
+    <environment names="Development">
+        <link href="~/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+        <link href="~/node_modules/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="~/css/site.css" rel="stylesheet" />
+    </environment>
+    <environment names="Staging,Production">
+        <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/css/site.css" rel="stylesheet" />
+    </environment>
 </head>
     <body>
         <header class="container">
@@ -53,9 +61,20 @@
             <div class="text-center">Copyright 2020 Dutch Treat LLC</div>
         </footer>
 
-        <script src="~/node_modules/jquery/dist/jquery.min.js"></script>
-        <script src="~/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/index.js"></script>
+        <environment names="Development">
+            <script src="~/node_modules/jquery/dist/jquery.js"></script>
+            <script src="~/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/index.js"></script>
+        </environment>
+        <environment names="Staging,Production">
+            <script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"
+                    asp-fallback-src="~/node_modules/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"
+                    asp-fallback-src="~/node_modules/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"></script>
+            <script src="~/dist/dutchtreat.min.js" asp-append-version="true"></script>
+        </environment>
         @RenderSection("scripts", false)
     </body>
 </html>

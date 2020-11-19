@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace DutchTreat.Controllers
 {
-    [Route("api/orders/{orderId}/items")]
+    [Route("api/orders/{orderId:int}/items")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     [Produces("application/json")]
@@ -56,7 +56,7 @@ namespace DutchTreat.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
